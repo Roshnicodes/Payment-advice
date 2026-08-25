@@ -1,0 +1,22 @@
+Dear Sir/Madam,
+
+Please find the payment advice details below.
+
+Advice No.: <%= @payment_advice.advice_no %>
+Recipient: <%= @payment_advice.payee_name %>
+Invoice No.: <%= @payment_advice.invoice_no %>
+Invoice Date: <%= @payment_advice.invoice_date&.strftime("%d %b %Y") %>
+Gross Amount: <%= number_to_currency(@payment_advice.gross_amount, unit: "Rs. ", precision: 2) %>
+TDS Deducted: <%= number_to_currency(@payment_advice.tds_amount, unit: "Rs. ", precision: 2) %>
+Other Deduction: <%= number_to_currency(@payment_advice.other_deduction, unit: "Rs. ", precision: 2) %>
+Net Amount Paid: <%= number_to_currency(@payment_advice.net_amount, unit: "Rs. ", precision: 2) %>
+Payment Mode: <%= @payment_advice.payment_mode %>
+UTR / Cheque No.: <%= @payment_advice.reference_no.presence || "-" %>
+Bank Name: <%= @payment_advice.bank_name.presence || "-" %>
+Payment Date: <%= @payment_advice.payment_date&.strftime("%d %b %Y") %>
+Remarks: <%= @payment_advice.remarks.presence || "-" %>
+
+Kindly acknowledge receipt of this payment.
+
+Regards,
+Accounts Department

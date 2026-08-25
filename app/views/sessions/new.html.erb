@@ -1,0 +1,72 @@
+<% content_for :title, "Login | Payment Advice" %>
+
+<main class="login-shell" data-controller="login">
+  <section class="login-stage">
+    <div class="login-date-pill">
+      <span><%= Date.current.strftime("%d %b %Y") %></span>
+      <span><%= Time.current.strftime("%I:%M %p") %></span>
+    </div>
+
+    <div class="login-brand-panel">
+      <div class="login-logo">PA</div>
+      <h1>Payment Advice</h1>
+      <h2>System</h2>
+      <div class="login-divider"></div>
+      <p>Manage vendors, invoices and payment advice records.</p>
+
+      <div class="login-feature-grid">
+        <div>
+          <span>🏢</span>
+          <strong>Vendor</strong>
+        </div>
+        <div>
+          <span>📄</span>
+          <strong>Invoice</strong>
+        </div>
+        <div>
+          <span>₹</span>
+          <strong>Payment</strong>
+        </div>
+        <div>
+          <span>🛡</span>
+          <strong>Reliable</strong>
+        </div>
+      </div>
+    </div>
+
+    <section class="login-card">
+      <div class="login-head">
+        <h2>Welcome Back</h2>
+        <p>Sign in to continue</p>
+      </div>
+
+      <%= form_with url: login_path, class: "login-form" do |form| %>
+        <label>
+          Email Address
+          <span class="login-input-wrap">
+            <span class="login-field-icon">✉</span>
+            <%= form.email_field :email, value: "accounts@example.com", autocomplete: "email", required: true %>
+          </span>
+        </label>
+
+        <label>
+          Password
+          <span class="login-input-wrap">
+            <span class="login-field-icon">🔒</span>
+            <%= form.password_field :password, value: "demo1234", autocomplete: "current-password", required: true, data: { login_target: "password" } %>
+            <button class="password-toggle" type="button" data-login-target="toggle" data-action="login#togglePassword" aria-label="Show password">👁</button>
+          </span>
+        </label>
+
+        <div class="login-options">
+          <label>
+            <input type="checkbox">
+            Remember me
+          </label>
+        </div>
+
+        <%= form.submit "Sign In", class: "primary-button login-submit" %>
+      <% end %>
+    </section>
+  </section>
+</main>
